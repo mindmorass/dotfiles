@@ -9,6 +9,13 @@ set ignorecase			" ignore case on searches
 set mousehide			" hide mouse while typing
 set nowrap			" no visual wrapping
 set wrapscan			" searches wrap around the file
+set tabstop=4
+set shiftwidth=4
+set filetype=on
+set expandtab
+set modeline
+set modelines=5
+set paste
 
 " cursor options
 au WinLeave * set nocursorline	" line and column options: nocursorline nocursorcolumn

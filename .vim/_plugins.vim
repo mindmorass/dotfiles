@@ -7,8 +7,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'yantze/pt_black'
-Plug 'itchyny/landscape.vim'
-Plug 'guns/jellyx.vim'
 
 " general plugins
 Plug 'junegunn/vim-easy-align'
