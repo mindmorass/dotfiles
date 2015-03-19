@@ -32,7 +32,8 @@
 [alias]
     st = status
     ss = status --short
-    ci = commit
+    ci = "!sh -c 'git add . && git commit -m \"$@\"' -"
+    deploy = "!sh -c 'git ci \"$@\" && git push' -"
     di = diff
     co = checkout
     w = whatchanged
@@ -60,6 +61,7 @@
     amend = commit -a --amend
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+    latest = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 
 [merge]
     tool = vimdiff
