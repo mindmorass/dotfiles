@@ -1,0 +1,10 @@
+--type-set
+puppet=.pp,.erb
+--type-set
+erb=.erb
+--type-set
+config=.conf,.cnf
+--type-set
+yaml=.yml,.yaml
+--type-set
+chef=.rb,.erb
