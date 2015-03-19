@@ -1,0 +1,33 @@
+# vim: ft=sh:
+
+. platform.lib 
+
+if which -s curl; then
+    export MY_EXTERNAL_IP=$(curl -s ifconfig.co)
+fi
+
+linux_get_network_info() {
+    # borrowed some from here http://www.if-not-true-then-false.com/2010/linux-get-ip-address/
+    echo fuck
+    #/sbin/ifconfig |grep -B1 "inet addr" |awk '{ if ( $1 == "inet" ) { print $2 } else if ( $2 == "Link" ) { printf "%s:" ,$1 } }' |awk -F: '{ print $1 ": " $3 }'; }
+}
+
+osx_get_network_info() {
+    local interfaces=$(/sbin/ifconfig  | awk '/^[[:alnum:]]+\:/ && /UP/ {print $1}' | cut -d : -f 1)
+    for interface in $interfaces; do
+        if [ -n "$(ipconfig getifaddr $interface)" ]; then
+            ##MY_${interface}=$(ipconfig getifaddr ${interface})"
+        fi
+    done
+}
+
+case $MY_PLATFORM in
+    darwin)
+        osx_get_network_info
+    ;;
+    linux)
+        linux_get_network_info
+    ;;
+    *)
+    ;;
+esac

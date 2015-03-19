@@ -1,0 +1,5 @@
+# vim: ft=sh:
+
+if which -s uname; then
+    export MY_KERNEL_VERSION=$(uname -r)
+fi

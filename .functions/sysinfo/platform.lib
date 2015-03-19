@@ -1,0 +1,7 @@
+# vim: ft=sh:
+
+if which -s uname; then
+    platform="$(uname -s)"
+    export MY_PLATFORM="${platform,,}"
+    unset platform
+fi
