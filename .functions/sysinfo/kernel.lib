@@ -1,5 +1,5 @@
 # vim: ft=sh:
 
-if which -s uname; then
+if test -e $(which uname); then
     export SYS_KERNEL_VERSION=$(uname -r)
 fi

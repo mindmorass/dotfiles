@@ -2,7 +2,7 @@
 
 . platform.lib 
 
-if which -s curl; then
+if test -e "$(which curl); then
     export MY_EXTERNAL_IP=$(curl -s ifconfig.co)
 fi
 

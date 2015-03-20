@@ -5,7 +5,7 @@ profile_aliases() {
     local plugin_dir=$(_plugin_dir)
     local my_plugin=$(profile_plug "sigurdga/ls-colors-solarized")
 
-    if which -s dircolors; then
+    if test -e $(which dircolors); then
         eval $(dircolors -b ${plugin_dir}/${my_plugin}/dircolors)
     fi
     
