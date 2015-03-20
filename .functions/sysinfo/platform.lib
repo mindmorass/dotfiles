@@ -1,8 +1,3 @@
 # vim: ft=sh:
 
-if test -e $(which uname); then
-    platform="$(uname -s)"
-    export MY_PLATFORM="${platform,,}"
-    export SYS_PLATFORM="${platform,,}"
-    unset platform
-fi
+export SYS_PLATFORM="$(uname -s | tr '[[:upper:]]' '[[:lower:]]')"
