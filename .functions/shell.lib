@@ -1,0 +1,12 @@
+# vim: set ft=sh:
+
+# TODO - add support for fish
+# http://fishshell.com/
+
+which_shell() {
+    if [ -n "${ZSH_NAME}" ]; then
+        echo "zsh"    
+    else
+        echo "bash"
+    fi
+}

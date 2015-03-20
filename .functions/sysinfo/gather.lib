@@ -1,0 +1,5 @@
+# vim: ft=sh:
+
+for library in $(find $HOME/.function/sysinfo/ -name "*.lib"); do
+    source $library
+done
