@@ -19,6 +19,8 @@ global_aliases() {
     alias l='ls -CF'
     alias g='git'
     alias cget='curl -C - -O'
+    alias less='less -R'
+    alias tmux='tmux -2'
 }
 
 case "${SYS_PLATFORM}" in
