@@ -5,7 +5,7 @@
 
 source $HOME/.functions/path.lib
            
-function setjdk() {
+setjdk() {
     if [ $# -ne 0 ]; then
         del_path '/System/Library/Frameworks/JavaVM.framework/Home/bin'
         if [ -n "${JAVA_HOME+x}" ]; then

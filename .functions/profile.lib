@@ -1,0 +1,48 @@
+# vim: set ft=sh:       
+
+# TODO - make a config file to easily get all plugins at once
+
+source $HOME/.functions/colors.lib
+
+profile_init() {
+    local profile_d=$(_profile_d)
+
+    colors_green_notice "Initializing Profile"
+    # any file in .profile.d should be loaded and made generic accordingly
+    # make changes slowly - breakage can be hard to find
+    for my_script in $(find ${profile_d}/ -type f); do
+        scriptname=$(awk -F/ '{print $NF}' <<< $my_script)
+        colors_yellow_subitem "preparing ${scriptname}"
+        source $my_script
+    done
+}
+
+profile_plug() {
+    # profile plugins - a cheap and quick git clone method
+    local user_project="${1}"
+    local github_url=$(_github_url)
+    local plugin_dir=$(_plugin_dir)
+    local destination="${plugin_dir}/${user_project}"
+
+    if [ ! -d "${destination}" ]; then
+        mkdir -p "${destination}"
+        local project="${github_url}/${user_project}.git"
+        if which git; then
+            git clone $project $destination
+        fi
+    fi
+}
+
+_github_url() {
+    echo "https://github.com"
+}
+# vim: set ft=sh:
+
+_profile_d() {
+    echo "${HOME}/.profile.d"
+}
+
+_plugin_dir(){
+    local profile_d=$(_profile_d)
+    echo "${profile_d}/.profile-plug"
+}

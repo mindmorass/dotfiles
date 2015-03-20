@@ -1,0 +1,65 @@
+# vim: set ft=sh:
+
+colors_cyan_notice() {
+    printf "${cyanb}${blackf}%s${reset}\n" "${1}"
+}
+
+colors_green_notice() {
+    printf "${greenb}${blackf}%s${reset}\n" "${1}"
+}
+
+colors_red_notice() {
+    printf "${redb}${whitef}%s${reset}\n" "${1}"
+}
+
+colors_yellow_notice() {
+    printf "${yellowb}${blackf}%s${reset}\n" "${1}"
+}
+
+colors_purple_notice() {
+    printf "${purpleb}${whitef}%s${reset}\n" "${1}"
+}
+
+colors_blue_notice() {
+    printf "${blueb}${whitef}%s${reset}\n" "${1}"
+}
+
+colors_white_notice() {
+    printf "${whitef}${blackb}%s${reset}\n" "${1}"
+}
+
+colors_yellow_subitem() {
+    printf "  - ${yellowf}${blackb}%s${reset}\n" "${1}"
+}
+
+colors_workflows() {
+    colors_yellow_notice "${@}"
+}
+
+colors_lib_notice() {
+    colors_green_notice "${@}"
+}
+
+_colors_initialize_ansi() {
+  # function sourced from
+  # http://intuitive.com/wicked/scripts/011-colors.txt
+
+  esc="\033"
+
+  blackf="${esc}[30m";   redf="${esc}[31m";    greenf="${esc}[32m"
+  yellowf="${esc}[33m"   bluef="${esc}[34m";   purplef="${esc}[35m"
+  cyanf="${esc}[36m";    whitef="${esc}[37m"
+
+  blackb="${esc}[40m";   redb="${esc}[41m";    greenb="${esc}[42m"
+  yellowb="${esc}[43m"   blueb="${esc}[44m";   purpleb="${esc}[45m"
+  cyanb="${esc}[46m";    whiteb="${esc}[47m"
+
+  boldon="${esc}[1m";    boldoff="${esc}[22m"
+  italicson="${esc}[3m"; italicsoff="${esc}[23m"
+  ulon="${esc}[4m";      uloff="${esc}[24m"
+  invon="${esc}[7m";     invoff="${esc}[27m"
+
+  reset="${esc}[0m"
+}
+
+_colors_initialize_ansi

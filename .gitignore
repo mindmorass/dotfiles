@@ -2,4 +2,5 @@
 .vim/.undo
 .vim/.swp
 .vim/plugged
-.vim/.netwhist
+.vim/.netrwhist
+.profile.d/.profile-plug

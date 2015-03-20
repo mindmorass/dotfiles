@@ -3,5 +3,6 @@
 if which -s uname; then
     platform="$(uname -s)"
     export MY_PLATFORM="${platform,,}"
+    export SYS_PLATFORM="${platform,,}"
     unset platform
 fi

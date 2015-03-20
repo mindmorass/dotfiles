@@ -1,0 +1,5 @@
+# making a system fact gathering to make basic decisions in profile scripts
+# maybe it will utilize facter or ohai if installed so this can be used 
+# beyond the profile for bash scripts
+
+outputs variables with the prefix SYS_

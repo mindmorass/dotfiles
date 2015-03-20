@@ -20,7 +20,7 @@ global_aliases() {
     alias cget='curl -C - -O'
 }
 
-case "${MY_PLATFORM}" in
+case "${SYS_PLATFORM}" in
     darwin)
         global_aliases
         os_x_aliases

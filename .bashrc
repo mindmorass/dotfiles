@@ -4,6 +4,7 @@
 
 source $HOME/.functions/path.lib
 source $HOME/.functions/jenv.lib
+source $HOME/.functions/profile.lib
 
 # RVM
 # https://rvm.io/
@@ -22,16 +23,13 @@ fi
 
 # PATH
 pre_path /opt/chefdk/bin
+pre_path /usr/local/opt/coreutils/libexec/gnubin
 pre_path $HOME/bin
 add_path /usr/sbin
 add_path /sbin
 add_path $HOME/.jenv/bin
 
-#eval "$(jenv init -)"
-#setjdk 1.8
+eval "$(jenv init -)"
+setjdk 1.8
 
-# any file in .bashrc.d should be loaded and made generic accordingly
-# make changes slowly - breakage can be hard to find
-for my_script in $(find $HOME/.bashrc.d -type f); do
-    source $my_script
-done
+profile_init
