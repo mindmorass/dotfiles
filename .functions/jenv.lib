@@ -8,10 +8,10 @@ source $HOME/.functions/path.lib
 setjdk() {
     if [ $# -ne 0 ]; then
         del_path '/System/Library/Frameworks/JavaVM.framework/Home/bin'
-        if [ -n "${JAVA_HOME+x}" ]; then
+        if [ -n "${JAVA_HOME}" ]; then
             del_path $JAVA_HOME
         fi
-        export JAVA_HOME=`/usr/libexec/java_home -v $@`
+        export JAVA_HOME=$(/usr/libexec/java_home -v $@)
         export PATH=$JAVA_HOME/bin:$PATH
     fi
 }
