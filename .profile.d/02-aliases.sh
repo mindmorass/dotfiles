@@ -12,6 +12,7 @@ linux_aliases() {
 }
 
 global_aliases() {
+    alias ls='ls --color'
     alias ll='ls -l'
     alias la='ls -A'
     alias lla='ls -lA'
