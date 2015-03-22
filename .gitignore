@@ -4,3 +4,5 @@
 .vim/plugged
 .vim/.netrwhist
 .profile.d/.profile-plug
+.ssh/*
+!.ssh/config
