@@ -9,6 +9,13 @@ os_x_aliases() {
     # http://computers.tutsplus.com/tutorials/speed-up-your-terminal-workflow-with-command-aliases-and-profile--mac-30515
     alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
     alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+    alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+    # app shortcuts
+    firefox() { open -a 'Firefox' "http://${@}"; }
+    chrome() { open -a 'Google Chrome' "http://${@}"; }
+    trash () { command mv "$@" ~/.Trash ; } 
+    ql () { qlmanage -p "$*" >& /dev/null; }
 }
 
 linux_aliases() {
@@ -27,6 +34,7 @@ global_aliases() {
     alias cget='curl -C - -O'
     alias less='less -R'
     alias tmux='tmux -2'
+    httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
 }
 
 case "${SYS_PLATFORM}" in
