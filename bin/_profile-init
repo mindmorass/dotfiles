@@ -1,0 +1,13 @@
+source $HOME/.functions/sysinfo/platform.lib
+
+init() {
+    if [ "${SYS_PLATFORM}" == "darwin" ]; then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        brew install caskroom/cask/brew-cask
+        \curl -L http://install.perlbrew.pl | bash
+        \curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+        \curl -sSL https://get.rvm.io | bash -s stable
+    fi
+}
+
+init
