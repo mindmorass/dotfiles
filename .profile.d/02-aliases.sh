@@ -39,16 +39,11 @@ global_aliases() {
 
 case "${SYS_PLATFORM}" in
     darwin)
-        global_aliases
         os_x_aliases
         ;;
     inux)
-        global_aliases
         linux_aliases
-        ;;
-    *)
-        global_aliases
         ;;
 esac
 
-
+global_aliases
