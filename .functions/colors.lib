@@ -43,32 +43,42 @@ colors_lib_notice() {
 _colors_initialize_ansi() {
   # function sourced from
   # http://intuitive.com/wicked/scripts/011-colors.txt
-  case "${1}" in
-    ps1)
-      # quick hack to support PS1 escaping
-      esc="\[\033"
-      end_esc="\]"
-      ;;
-    *)
-      esc="\033"
-      end_esc=""
-      ;;
-  esac 
+  esc="\033"
+  ps_esc="\[\033"
+  ps_end="\]"
 
-  blackf="${esc}[30m${end_esc}";   redf="${esc}[31m${end_esc}";    greenf="${esc}[32m${end_esc}"
-  yellowf="${esc}[33m${end_esc}";   bluef="${esc}[34m${end_esc}";   purplef="${esc}[35m${end_esc}"
-  cyanf="${esc}[36m${end_esc}";    whitef="${esc}[37m${end_esc}"
+  blackf="${esc}[30m";   redf="${esc}[31m";    greenf="${esc}[32m"
+  ps_blackf="${ps_esc}[30m${ps_end}";   ps_redf="${ps_esc}[31m${ps_end}";    ps_greenf="${ps_esc}[32m${ps_end}"
 
-  blackb="${esc}[40m${end_esc}";   redb="${esc}[41m${end_esc}";    greenb="${esc}[42m${end_esc}"
-  yellowb="${esc}[43m${end_esc}";  blueb="${esc}[44m${end_esc}";   purpleb="${esc}[45m${end_esc}"
-  cyanb="${esc}[46m${end_esc}";    whiteb="${esc}[47m${end_esc}"
+  yellowf="${esc}[33m";   bluef="${esc}[34m";   purplef="${esc}[35m"
+  ps_yellowf="${ps_esc}[33m${ps_end}";   ps_bluef="${ps_esc}[34m${ps_end}";   ps_purplef="${ps_esc}[35m${ps_end}"
 
-  boldon="${esc}[1m${end_esc}";    boldoff="${esc}[22m${end_esc}"
-  italicson="${esc}[3m${end_esc}"; italicsoff="${esc}[23m${end_esc}"
-  ulon="${esc}[4m${end_esc}";      uloff="${esc}[24m${end_esc}"
-  invon="${esc}[7m${end_esc}";     invoff="${esc}[27m${end_esc}"
+  cyanf="${esc}[36m";    whitef="${esc}[37m"
+  ps_cyanf="${ps_esc}[36m${ps_end}";    ps_whitef="${esc}[37m${ps_end}"
 
-  reset="${esc}[0m${end_esc}"
+  blackb="${esc}[40m";   redb="${esc}[41m";    greenb="${esc}[42m"
+  ps_blackb="${ps_esc}[40m${ps_end}";   ps_redb="${ps_esc}[41m${ps_end}";    ps_greenb="${ps_esc}[42m${ps_end}"
+
+  yellowb="${esc}[43m";  blueb="${esc}[44m";   purpleb="${esc}[45m"
+  ps_yellowb="${ps_esc}[43m${ps_end}";  ps_blueb="${ps_esc}[44m${ps_end}";   ps_purpleb="${ps_esc}[45m${ps_end}"
+
+  cyanb="${esc}[46m";    whiteb="${esc}[47m"
+  ps_cyanb="${ps_esc}[46m${ps_end}";    ps_whiteb="${ps_esc}[47m${ps_end}"
+
+  boldon="${esc}[1m";    boldoff="${esc}[22m"
+  ps_boldon="${ps_esc}[1m${ps_end}";    ps_boldoff="${ps_esc}[22m${ps_end}"
+
+  italicson="${esc}[3m"; italicsoff="${esc}[23m"
+  ps_italicson="${ps_esc}[3m${ps_end}"; ps_italicsoff="${ps_esc}[23m${ps_end}"
+
+  ulon="${esc}[4m";      uloff="${esc}[24m"
+  ps_ulon="${ps_esc}[4m${ps_end}";      ps_uloff="${ps_esc}[24m${ps_end}"
+
+  invon="${esc}[7m";     invoff="${esc}[27m"
+  ps_invon="${ps_esc}[7m${ps_end}";     ps_invoff="${ps_esc}[27m${ps_end}"
+
+  reset="${esc}[0m"
+  ps_reset="${ps_esc}[0m${ps_end}"
 }
 
 _colors_initialize_ansi
