@@ -43,23 +43,32 @@ colors_lib_notice() {
 _colors_initialize_ansi() {
   # function sourced from
   # http://intuitive.com/wicked/scripts/011-colors.txt
+  case "${1}" in
+    ps1)
+      # quick hack to support PS1 escaping
+      esc="\[\033"
+      end_esc="\]"
+      ;;
+    *)
+      esc="\033"
+      end_esc=""
+      ;;
+  esac 
 
-  esc="\033"
+  blackf="${esc}[30m${end_esc}";   redf="${esc}[31m${end_esc}";    greenf="${esc}[32m${end_esc}"
+  yellowf="${esc}[33m${end_esc}";   bluef="${esc}[34m${end_esc}";   purplef="${esc}[35m${end_esc}"
+  cyanf="${esc}[36m${end_esc}";    whitef="${esc}[37m${end_esc}"
 
-  blackf="${esc}[30m";   redf="${esc}[31m";    greenf="${esc}[32m"
-  yellowf="${esc}[33m"   bluef="${esc}[34m";   purplef="${esc}[35m"
-  cyanf="${esc}[36m";    whitef="${esc}[37m"
+  blackb="${esc}[40m${end_esc}";   redb="${esc}[41m${end_esc}";    greenb="${esc}[42m${end_esc}"
+  yellowb="${esc}[43m${end_esc}";  blueb="${esc}[44m${end_esc}";   purpleb="${esc}[45m${end_esc}"
+  cyanb="${esc}[46m${end_esc}";    whiteb="${esc}[47m${end_esc}"
 
-  blackb="${esc}[40m";   redb="${esc}[41m";    greenb="${esc}[42m"
-  yellowb="${esc}[43m"   blueb="${esc}[44m";   purpleb="${esc}[45m"
-  cyanb="${esc}[46m";    whiteb="${esc}[47m"
+  boldon="${esc}[1m${end_esc}";    boldoff="${esc}[22m${end_esc}"
+  italicson="${esc}[3m${end_esc}"; italicsoff="${esc}[23m${end_esc}"
+  ulon="${esc}[4m${end_esc}";      uloff="${esc}[24m${end_esc}"
+  invon="${esc}[7m${end_esc}";     invoff="${esc}[27m${end_esc}"
 
-  boldon="${esc}[1m";    boldoff="${esc}[22m"
-  italicson="${esc}[3m"; italicsoff="${esc}[23m"
-  ulon="${esc}[4m";      uloff="${esc}[24m"
-  invon="${esc}[7m";     invoff="${esc}[27m"
-
-  reset="${esc}[0m"
+  reset="${esc}[0m${end_esc}"
 }
 
 _colors_initialize_ansi
