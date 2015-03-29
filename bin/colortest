@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 # sourced from https://gist.github.com/esundahl/1651086
 
 function color_test {
