@@ -54,4 +54,4 @@ Examples
 TODO:
 - break profile management out into it's own repo?
 - generic shell support http://hyperpolyglot.org/unix-shells
-- git archive support to pull individual files from github repos: nice when repo is large
+- git archive support to pull individual files from github repos: nice when repo is large or curl the raw files
