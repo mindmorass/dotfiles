@@ -23,8 +23,8 @@ if [ -d "${HOME}/perl5" ]; then
 fi
 
 # PATH
-pre_path /opt/chefdk/bin
 pre_path /usr/local/opt/coreutils/libexec/gnubin
+pre_path /opt/chefdk/bin
 pre_path $HOME/bin
 add_path /usr/sbin
 add_path /sbin

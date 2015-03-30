@@ -2,6 +2,11 @@
 # concepts similar to vundle to get projects from github
 # but for general profile use
 
+# do not use indrect expansion or zsh breaks ${!VAR}
+# http://tldp.org/LDP/abs/html/ivr.html
+# using a lot of eval here... I don't like that ..
+# need to learn more about the diffieren expansions for each shell 
+
 source $HOME/.functions/colors.lib
 source $HOME/.functions/profile.lib
 source $HOME/.functions/yaml.lib
@@ -17,31 +22,31 @@ _retrieve_plugin() {
 _target() {
     local plugin="${1}"
     local plugin_target="${plugin}_target"
-    echo "${!plugin_target}"
+    echo $(eval echo "\$${plugin_target}")
 }
 
 _execute() {
     local plugin="${1}"
     local plugin_execute="${plugin}_execute"
-    echo "${!plugin_execute}"
+    echo $(eval echo "\$${plugin_execute}")
 }
 
 _source() {
     local plugin="${1}"
     local plugin_source="${plugin}_source"
-    echo "${!plugin_source}"
+    echo $(eval echo "\$${plugin_source}")
 }
 
 _link_target() {
     local plugin="${1}"
     local plugin_link_target="${plugin}_link_target"
-    echo "${!plugin_link_target}"
+    echo $(eval echo "\$${plugin_link_target}")
 }
 
 _link_source() {
     local plugin="${1}"
     local plugin_link_source="${plugin}_link_source"
-    echo "${!plugin_link_source}"
+    echo $(eval echo "\$${plugin_link_source}")
 }
 
 _plugin_notice() {
@@ -58,8 +63,8 @@ _execute_plugin() {
 
     if test -n "${command}"; then
         if test $(which $command); then
-            full_command="${command} ${plugin_dir}/${plugin_source}/${plugin_target}"
-            eval $($full_command)
+            full_cmd="${command} ${plugin_dir}/${plugin_source}/${plugin_target}"
+            eval `$full_cmd`
         else
             colors_yellow_notice "dependency not met"
         fi
