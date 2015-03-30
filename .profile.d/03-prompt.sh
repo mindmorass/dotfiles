@@ -19,7 +19,9 @@ set_prompt() {
             # consider git archive in the plugin modules
             source $scripts_dir/git/git-completion.bash
             # drop a newline between prompts
-            PROMPT_COMMAND="echo"
+            # http://wiki.bash-hackers.org/snipplets/print_horizontal_line
+            # PROMPT_COMMAND="echo $'\e7\e[2;800H\e[16D\e[7m' $(date +"%Y/%m/%d %H:%M")$'\e8'"
+            PROMPT_COMMAND="echo -e '${blackf}${boldon}'; eval printf '%.0s_' '{1.."${COLUMNS:-$(tput cols)}"}'; echo -e '${reset}'"
             PS1="${ps_yellowf}${ps_boldoff}(${ps_cyanf}\u${ps_whitef}${ps_boldoff}@${ps_cyanf}\h${ps_redf}${ps_boldon} \W\$(__git_ps1 ' ${ps_greenf}[${ps_purplef}%s${ps_greenf}]${ps_reset}')${ps_reset}${ps_yellowf})${ps_reset}\n${ps_blackf}${ps_boldon}|${ps_whitef}${ps_boldoff}[${ps_whitef}${ps_boldon} \d - \T ${ps_whitef}${ps_boldoff}]${ps_blackf}${ps_boldon}|${ps_reset}\n ${ps_redf}${ps_boldon}\\_${ps_yellowf}${ps_boldoff} \$${ps_reset} "
             ;;
         zsh)
