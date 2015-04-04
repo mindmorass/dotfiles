@@ -32,17 +32,21 @@ profile_plug() {
             git clone $project $destination
         fi
     fi
-
-    # passthrough for reuse of name as a variable
-    # this pretty much indicates that I did something wrong
-    # removing this - leaving commented to make sure nothing got missed
-    # echo "${user_project}"
 }
 
 _github_url() {
-    echo "https://github.com"
+    raw="${1}"
+    if [ -n "${raw}" ]; then
+        _github_raw_url
+    else
+        echo "https://github.com"
+    fi
 }
 # vim: set ft=sh:
+
+_github_raw_url() {
+    echo "https://raw.githubusercontent.com"
+}
 
 _profile_d() {
     echo "${HOME}/.profile.d"

@@ -3,7 +3,13 @@ ls_colors:
   source: sigurdga/ls-colors-solarized
   execute: dircolors
   target: dircolors
+
 tmux:
   source: altercation/solarized
   link_source: tmux/tmuxcolors-dark.conf
   link_target: ${HOME}/.tmux.conf
+
+bash_preexec:
+  source: rcaloras/bash-preexec
+  execute: source
+  target: bash-preexec.sh

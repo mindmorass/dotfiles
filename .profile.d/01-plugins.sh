@@ -7,11 +7,16 @@
 # using a lot of eval here... I don't like that ..
 # need to learn more about the diffieren expansions for each shell 
 
+# TODO - load all plugins into an array then run in parallels to
+# speed up initial profile setup
+# http://www.gnu.org/software/parallel/parallel_tutorial.html#Prerequisites
+
 source $HOME/.functions/colors.lib
 source $HOME/.functions/profile.lib
 source $HOME/.functions/yaml.lib
 source $HOME/.functions/sysinfo/platform.lib
 
+# Debug
 #set -x
 
 _retrieve_plugin() {
@@ -62,11 +67,16 @@ _execute_plugin() {
     local plugin_dir=$(_plugin_dir)
 
     if test -n "${command}"; then
-        if test $(which $command); then
+        if [ $(which $command) ] || [ "${command}" = 'source' ]; then
             full_cmd="${command} ${plugin_dir}/${plugin_source}/${plugin_target}"
-            eval `$full_cmd`
+            if [ "${command}" = 'source' ]; then
+                if ! grep -q "${plugin}" $HOME/.source; then echo "# ${plugin}" >> "${HOME}/.source"; echo "${full_cmd}" >> "${HOME}/.source" && echo "To use ${plugin} run: ${full_cmd}"; fi
+            else 
+                full_cmd="${command} ${plugin_dir}/${plugin_source}/${plugin_target}"
+                eval "$($full_cmd)"
+            fi
         else
-            colors_yellow_notice "dependency not met"
+            colors_yellow_notice "dependency not met for ${plugin}"
         fi
     fi
 }
